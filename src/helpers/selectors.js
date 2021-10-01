@@ -21,5 +21,4 @@ export const  getAppointmentsForDay = function(state, day){
 }
 
 
-// module.exports = {getAppointmentsForDay};
 
