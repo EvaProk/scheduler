@@ -2,8 +2,6 @@ import React , { useState }  from "react";
 import Button from 'components/Button';
 import InterviewerList from 'components/InterviewerList';
 
-
-
 export default function Form(props) {
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
@@ -11,7 +9,6 @@ export default function Form(props) {
     setName("")
     setInterviewer(null)
   }
-
   const cancel = () => {
     reset()
     props.onCancel()
@@ -28,6 +25,7 @@ export default function Form(props) {
           onChange={(event) => setName(event.target.value)}
           type="text"
           placeholder="Enter Student Name"
+         
           /*
             This must be a controlled component
           */
