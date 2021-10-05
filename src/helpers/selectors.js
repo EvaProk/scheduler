@@ -20,19 +20,21 @@ export const  getAppointmentsForDay = function(state, day){
   return resArr;
 }
 
-export const  getInterview = function(state, interview){
+export const getInterview = function (state, interview) {
   if (!interview) {
     return null;
   } else {
 
-    return {student: interview.student,
-    interviewer: state.interviewers[interview.interviewer]
+    return {
+      student: interview.student,
+      interviewer: state.interviewers[interview.interviewer]
+    }
+    //   interview.interviewer = state.interviewers[interview.interviewer];
+    //   return interview;
+    // }
   }
-  //   interview.interviewer = state.interviewers[interview.interviewer];
-  //   return interview;
-  // }
 }
-}
+
 
 export const getInterviewersForDay = function(state, day){
   const filteredInterv = [];

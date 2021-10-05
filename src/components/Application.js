@@ -19,20 +19,23 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
-    return new Promise((resolve, reject) => {
-      axios.put(`/api/appointments/${id}`,{ ...appointment })
+  
+      return axios.put(`/api/appointments/${id}`,{ ...appointment })
         .then(() => {
 
           setState({ ...state, appointments })
-          resolve()
-        })})
+  
+        })
   }
 
   function cancelInterview(id){
 
-    return new Promise((resolve, reject) => {
-      axios.delete(`/api/appointments/${id}`)
+    // return new Promise((resolve, reject) => {
+
+      
+     return  axios.delete(`http://localhost:8001/api/appointments/${id}`)
         .then(() => {
+      
           const appointment = {
             ...state.appointments[id],
             interview: null
@@ -43,8 +46,8 @@ export default function Application(props) {
 
           }
           setState({ ...state, appointments })
-          resolve()
-        })})
+      
+        })
 
   }
 
@@ -67,9 +70,6 @@ export default function Application(props) {
   
     setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
     })
-
-    console.log("interviewers----------", state.interviewers)
-
   }, []);
 
   const dailyAppointments  = getAppointmentsForDay(state, state.day);
@@ -77,7 +77,6 @@ export default function Application(props) {
 
     const interview = getInterview(state, appointment.interview);
     const interviewers = getInterviewersForDay(state, state.day);
-    console.log("interv------",interview)
   
     return (
       <Appointment
@@ -85,7 +84,6 @@ export default function Application(props) {
         id={appointment.id}
         time={appointment.time}
         interview={interview}
-      
         interviewers = {interviewers}
         bookInterview = {bookInterview}
         cancelInterview ={cancelInterview}
