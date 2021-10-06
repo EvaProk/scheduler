@@ -4,29 +4,27 @@ import { useState} from "react";
    const [mode, setMode] = useState(initial);
    const [history, setHistory] = useState([initial]);
 
-   const transition = function (newMode, replace = false) {
+   const transition = function (mode, replace = false) {
+     
      if (!replace) {
        setHistory(prev => [...prev, mode])
-       setMode(newMode);
+       setMode(mode);
      } else {
        const newHistory = [...history];
-       newHistory.splice([newHistory.length - 1], 1, newMode)
+       newHistory.splice([newHistory.length - 1], 1, mode)
        setHistory(newHistory);
-       setMode(newMode)
+       setMode(mode)
      };
    }
-
+ 
+ 
   function back() {
     if (history.length > 1) {
       const newHistory = [...history];
-      console.log(newHistory)
       newHistory.pop();
-      
       setMode(newHistory[newHistory.length - 1])
-      // console.log(mode)
      setHistory(newHistory)
     }
-    
   };
 
   return { mode, transition, back };
