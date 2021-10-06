@@ -1,4 +1,4 @@
-const { useState } = require("react");
+import { useState} from "react";
 
  const useVisualMode = function (initial) {
    const [mode, setMode] = useState(initial);
@@ -6,7 +6,7 @@ const { useState } = require("react");
 
    const transition = function (newMode, replace = false) {
      if (!replace) {
-       setHistory(prev => ([...prev, mode]))
+       setHistory(prev => [...prev, mode])
        setMode(newMode);
      } else {
        const newHistory = [...history];
@@ -19,13 +19,16 @@ const { useState } = require("react");
   function back() {
     if (history.length > 1) {
       const newHistory = [...history];
+      console.log(newHistory)
       newHistory.pop();
+      
       setMode(newHistory[newHistory.length - 1])
-      setHistory(newHistory)
-    } else {
-      return;
+      // console.log(mode)
+     setHistory(newHistory)
     }
+    
   };
+
   return { mode, transition, back };
 }
 
