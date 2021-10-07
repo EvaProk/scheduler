@@ -21,7 +21,6 @@ Jest and Cypress tests are used through the development of the project.
 - The application makes API requests to load and persist data. We do not lose data after a browser refresh.
 
 ## Final Product
-!["Video presentation "](https://github.com/EvaProk/scheduler/blob/master/docs/video.mov)
 !["Main Page"](https://github.com/EvaProk/scheduler/blob/master/docs/MainPage.png)
 !["Adding a new Interview"](https://github.com/EvaProk/scheduler/blob/master/docs/AddNew.png)
 !["Deleting an Interview"](https://github.com/EvaProk/scheduler/blob/master/docs/deleting.png)
