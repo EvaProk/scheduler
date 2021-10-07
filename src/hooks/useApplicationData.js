@@ -66,7 +66,6 @@ const useApplicationData = function () {
     };
 
     const dayOfInterview = state.days.findIndex(day => day.appointments.includes(id))
-    console.log(dayOfInterview)
     const day = {...state.days[dayOfInterview], 
     spots: state.days[dayOfInterview].spots - 1 }
 
@@ -75,7 +74,6 @@ const useApplicationData = function () {
 
     return axios.put(`/api/appointments/${id}`, { ...appointment })
       .then(() => {
-
         return setState({ ...state, appointments, days  })
       })
       
@@ -85,7 +83,6 @@ const useApplicationData = function () {
   function cancelInterview(id) {
 
     const dayOfInterview = state.days.findIndex(day => day.appointments.includes(id))
-    console.log(dayOfInterview)
     const day = {...state.days[dayOfInterview], 
     spots: state.days[dayOfInterview].spots + 1 }
 
