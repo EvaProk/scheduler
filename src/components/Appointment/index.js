@@ -50,9 +50,11 @@ export default function Appointment(props) {
    return (<article className="appointment"> 
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === CREATE && (<Form
+      {mode === CREATE && (
+      <Form
          interviewers={props.interviewers}
          onSave={save}
+         onCancel={back} 
       />)}
       {mode === SAVING && (<Status message="Saving..." />)}
       {mode === CONFIRM && (
@@ -63,13 +65,13 @@ export default function Appointment(props) {
       />)}
       {mode === DELETING && (<Status message="Deleting..." />)}
       {mode === ERROR_DELETE && (<Error message="the deleting error" onClose = {back}/>)}
-      {mode === ERROR_SAVE && (<Error message="the Saving error" onClose = {back}/>)}
+      {mode === ERROR_SAVE && (<Error message="the Saving error" onClose = {()=> transition(CREATE)}/>)}
       {mode === EDIT && (
       <Form 
       interviewers={props.interviewers} 
       onSave={save} 
       onCancel={back} 
-      interviewer={interview.interviewer.id} 
+      interviewer={interview.interviewer? interview.interviewer.id : ""} // Can edit the interview when the interviewer is not defined
       name={interview.student} />)}
       {mode === SHOW && (
          <Show

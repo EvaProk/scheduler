@@ -29,7 +29,7 @@ export const getInterview = function (state, interview) {
 
 export const getInterviewersForDay = function (state, day) {
   const filteredInterv = [];
-  const resArr = [];
+  const InterviewersForDay = [];
   for (const item of state.days) {
     if (item.name === day) {
       for (const interviewer of item.interviewers) {
@@ -39,8 +39,8 @@ export const getInterviewersForDay = function (state, day) {
   };
   for (const index of filteredInterv) {
     if (index === state.interviewers[index].id) {
-      resArr.push(state.interviewers[index]);
+      InterviewersForDay.push(state.interviewers[index]);
     };
   };
-  return resArr;
+  return InterviewersForDay;
 };
